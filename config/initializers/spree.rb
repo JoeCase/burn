@@ -12,9 +12,9 @@ Spree.config do |config|
 
   # For Amazon S3
   config.use_s3 = true
-  config.s3_bucket = '<burningshop>'
-  config.s3_access_key = "<AKIAIPSI3DA3MWMDK6PQ>"
-  config.s3_secret = "<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>"
+  config.s3_bucket = 'burningshop'
+  config.s3_access_key = "AKIAIPSI3DA3MWMDK6PQ"
+  config.s3_secret = "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"
 end
 
 # For Amazon S3
