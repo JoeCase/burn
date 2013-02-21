@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130218213188) do
+ActiveRecord::Schema.define(:version => 20130219031855) do
 
   create_table "spree_activators", :force => true do |t|
     t.string   "description"
@@ -66,6 +66,15 @@ ActiveRecord::Schema.define(:version => 20130218213188) do
   end
 
   add_index "spree_adjustments", ["adjustable_id"], :name => "index_adjustments_on_order_id"
+
+  create_table "spree_amazon_imports", :force => true do |t|
+    t.string   "attachment_file_name"
+    t.integer  "attachment_file_size"
+    t.string   "attachment_content_type"
+    t.datetime "attachment_updated_at"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
 
   create_table "spree_assets", :force => true do |t|
     t.integer  "viewable_id"
@@ -311,8 +320,10 @@ ActiveRecord::Schema.define(:version => 20130218213188) do
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false
     t.boolean  "on_demand",            :default => false
+    t.string   "amazon_id"
   end
 
+  add_index "spree_products", ["amazon_id"], :name => "index_spree_products_on_amazon_id"
   add_index "spree_products", ["available_on"], :name => "index_spree_products_on_available_on"
   add_index "spree_products", ["deleted_at"], :name => "index_spree_products_on_deleted_at"
   add_index "spree_products", ["name"], :name => "index_spree_products_on_name"
